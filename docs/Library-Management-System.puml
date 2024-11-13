@@ -1,0 +1,20 @@
+@startuml
+:User: <|-- :Student:
+:User: <|-- :Staff:
+
+:User: ---> (Authenticate)
+:User: ---> (Reserve a book)
+:User: ---> (Request new book)
+(Authenticate) <.. (Invalid username and password) : extend
+
+:Librarian: -- (Add book item)
+:Librarian: -- (Delete book item)
+:Librarian: -- (Edit book item)
+
+(Add book item) ..> (Update catalog) :include
+(Delete book item) ..> (Update catalog) :include
+(Edit book item) ..> (Update catalog) :include
+
+
+
+@enduml
